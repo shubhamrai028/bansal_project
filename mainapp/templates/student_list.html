@@ -1,0 +1,29 @@
+{% extends 'base_template.html' %}
+{% block main %}
+
+<h3> Students List </h3> 
+    <table id="userTable"  class="table table-bordered">
+      <tr>
+        <th>id</th>
+        <th>Student Name</th>
+        <th>Enrollment</th>
+        <th>School Name</th>
+        <th >Created Date</th>
+        <th>Action</th>
+        
+      </tr>
+      {% for data in datalist %}
+      <tr id="data-{{data.id}}">
+        <td class="userName userData" name="id">{{data.Id}}</td>
+        <td class="userAddress userData" name="name">{{data.Name}}</td>
+        <td class="userAddress userData" name="enrl">{{data.Enrollment}}</td>
+        <td class="userAddress userData" name="school_name">{{data.School.Name}}</td>
+        <td class="userAge userData" name="created_at">{{data.Create_at}}</td>
+        <td><a href="/deletestudent/{{data.Id}}/{{data.School.Id}}">Delete Student</a>
+            <a href="/updatestudent/{{data.Id}}">Update Student</a>
+        
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+{% endblock main %}

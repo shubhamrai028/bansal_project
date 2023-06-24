@@ -1,0 +1,36 @@
+{% extends 'base_template.html' %}
+{% block main %}
+
+<h3> Update Student </h3> 
+
+<form action = "/update_student_save/{{students_exist_data.Id}}" method = 'POST'>
+    {% csrf_token %}
+
+    <div >
+        <label class="ed-form-label">
+          Select school for upodate
+          <span class="text-danger">*</span>
+        </label>
+        <select name="school_id">
+          <option value="">Select School</option>
+          {% for data in schools %}
+          <option value="{{data.Id}}">{{ data.Name }}</option>
+          {% endfor %}
+        </select>
+        <span id="selectionn" class="text-danger font-weight-bold" style="font-size: 80%;"></span>
+      </div>
+
+      <div >
+        <label class="ed-form-label">
+          Enter student name for update
+          <span class="text-danger">*</span>
+        </label>
+        <input type= 'text' name = 'student_name'>
+        <span id="selectionn" class="text-danger font-weight-bold" style="font-size: 80%;"></span>
+      </div>
+
+      <button type = "submit">update</button>
+
+</form>
+    </table>
+{% endblock main %}
